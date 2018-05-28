@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>
+    Bottles
+    <a href="/bottles/new" class="btn btn-lg btn-success">New Bottle</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Alcohol</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @bottles.each do |bottle| %>
+      <tr>
+        <td><%= bottle.alcohol_id %></td>
+        <td>
+          <a href="/bottles/<%= bottle.id %>" class="btn btn-primary">Show</a>
+          <a href="/bottles/<%= bottle.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_bottle/<%= bottle.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

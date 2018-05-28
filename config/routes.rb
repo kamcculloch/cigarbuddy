@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Bottle resource:
+  # CREATE
+  get "/bottles/new", :controller => "bottles", :action => "new"
+  post "/create_bottle", :controller => "bottles", :action => "create"
+
+  # READ
+  get "/bottles", :controller => "bottles", :action => "index"
+  get "/bottles/:id", :controller => "bottles", :action => "show"
+
+  # UPDATE
+  get "/bottles/:id/edit", :controller => "bottles", :action => "edit"
+  post "/update_bottle/:id", :controller => "bottles", :action => "update"
+
+  # DELETE
+  get "/delete_bottle/:id", :controller => "bottles", :action => "destroy"
+  #------------------------------
+
   # Routes for the Pairing resource:
   # CREATE
   get "/pairings/new", :controller => "pairings", :action => "new"
