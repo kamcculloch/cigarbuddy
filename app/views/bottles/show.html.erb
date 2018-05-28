@@ -23,3 +23,65 @@
     </div>
   </div>
 </div>
+
+<!-- A Bottle has many pairings -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Pairings
+      </li>
+
+      <% @bottle.pairings.each do |pairing| %>
+        <li class="list-group-item">
+          <a href="/pairings/<%= pairing.id %>">
+            <%= pairing.cigar_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/pairings/<%= pairing.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/pairings/<%= pairing.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_pairing/<%= pairing.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<!-- A Bottle has many cigars -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Cigars
+      </li>
+
+      <% @bottle.cigars.each do |cigar| %>
+        <li class="list-group-item">
+          <a href="/cigars/<%= cigar.id %>">
+            <%= cigar.created_at %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/cigars/<%= cigar.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/cigars/<%= cigar.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_cigar/<%= cigar.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
