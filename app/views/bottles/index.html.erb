@@ -15,7 +15,13 @@
 
       <% @bottles.each do |bottle| %>
       <tr>
-        <td><%= bottle.alcohol.created_at %></td>
+        <td>
+          <% if bottle.alcohol.present? %>
+            <a href="/alcohols/<%= bottle.alcohol.id %>">
+              <%= bottle.alcohol.created_at %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/bottles/<%= bottle.id %>" class="btn btn-primary">Show</a>
           <a href="/bottles/<%= bottle.id %>/edit" class="btn btn-warning">Edit</a>

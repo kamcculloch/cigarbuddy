@@ -16,8 +16,20 @@
 
       <% @pairings.each do |pairing| %>
       <tr>
-        <td><%= pairing.cigar.created_at %></td>
-        <td><%= pairing.bottle.id %></td>
+        <td>
+          <% if pairing.cigar.present? %>
+            <a href="/cigars/<%= pairing.cigar.id %>">
+              <%= pairing.cigar.created_at %>
+            </a>
+          <% end %>
+        </td>
+        <td>
+          <% if pairing.bottle.present? %>
+            <a href="/bottles/<%= pairing.bottle.id %>">
+              <%= pairing.bottle.id %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/pairings/<%= pairing.id %>" class="btn btn-primary">Show</a>
           <a href="/pairings/<%= pairing.id %>/edit" class="btn btn-warning">Edit</a>

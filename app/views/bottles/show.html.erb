@@ -6,7 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Alcohol</dt>
-      <dd><%= @bottle.alcohol_id %></dd>
+      <dd>
+        <% if @bottle.alcohol.present? %>
+          <a href="/alcohols/<%= @bottle.alcohol_id %>">
+            <%= @bottle.alcohol.created_at %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

@@ -6,10 +6,22 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Cigar</dt>
-      <dd><%= @pairing.cigar_id %></dd>
+      <dd>
+        <% if @pairing.cigar.present? %>
+          <a href="/cigars/<%= @pairing.cigar_id %>">
+            <%= @pairing.cigar.created_at %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Bottle</dt>
-      <dd><%= @pairing.bottle_id %></dd>
+      <dd>
+        <% if @pairing.bottle.present? %>
+          <a href="/bottles/<%= @pairing.bottle_id %>">
+            <%= @pairing.bottle.id %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 
