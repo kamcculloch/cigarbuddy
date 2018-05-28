@@ -24,7 +24,7 @@
           Cigar
         </label>
 
-        <input type="text" id="cigar_id" name="cigar_id" placeholder="Cigar" class="form-control" value="<%= @pairing.cigar_id %>">
+        <%= select_tag(:cigar_id, options_from_collection_for_select(Cigar.all, :id, :created_at, @pairing.cigar_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for bottle_id -->
