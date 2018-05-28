@@ -1,11 +1,11 @@
 <div class="page-header">
   <h1>
-    Alcohols
-    <a href="/alcohols/new" class="btn btn-lg btn-success">New Alcohol</a>
+    Boldnesses
+    <a href="/boldnesses/new" class="btn btn-lg btn-success">New Boldness</a>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
-    <%= search_form_for @q, :class => collapse_search_form, :id => "alcohols_filters" do |f| %>
+    <%= search_form_for @q, :class => collapse_search_form, :id => "boldnesses_filters" do |f| %>
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
@@ -54,15 +54,15 @@
       </script>
 
         <div class="form-group">
-      <%= f.label :tastes_name_cont, "Taste name contains" %>
-      <%= f.text_field :tastes_name_cont, :class => "form-control", :placeholder => "Taste name contains" %>
+      <%= f.label :taste_name_cont, "Taste name contains" %>
+      <%= f.text_field :taste_name_cont, :class => "form-control", :placeholder => "Taste name contains" %>
     </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
-      <a href="/alcohols" class="btn btn-default btn-block mb-1">Clear filters</a>
+      <a href="/boldnesses" class="btn btn-default btn-block mb-1">Clear filters</a>
     <% end %>
-    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#alcohols_filters">
+    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#boldnesses_filters">
       Show Filters
     </a>
   </div>
@@ -76,17 +76,17 @@
         <th>Actions</th>
       </tr>
 
-      <% @alcohols.each do |alcohol| %>
+      <% @boldnesses.each do |boldness| %>
       <tr>
-        <td><%= alcohol.name %></td>
+        <td><%= boldness.name %></td>
         <td>
-          <a href="/alcohols/<%= alcohol.id %>" class="btn btn-primary">Show</a>
-          <a href="/alcohols/<%= alcohol.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_alcohol/<%= alcohol.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/boldnesses/<%= boldness.id %>" class="btn btn-primary">Show</a>
+          <a href="/boldnesses/<%= boldness.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_boldness/<%= boldness.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>
     </table>
-    <%= paginate @alcohols, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @boldnesses, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

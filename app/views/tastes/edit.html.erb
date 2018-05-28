@@ -1,6 +1,6 @@
 <!-- Validation failure messages -->
-<% if @alcohol.errors.any? %>
-  <% @alcohol.errors.full_messages.each do |message| %>
+<% if @taste.errors.any? %>
+  <% @taste.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= message %>
@@ -9,12 +9,12 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Add Alcohol</h3>
+  <h3>Edit Taste #<%= @taste.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/create_alcohol" method="post">
+    <form action="/update_taste/<%= @taste.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
@@ -24,14 +24,14 @@
           Name
         </label>
 
-        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @alcohol.name %>">
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @taste.name %>">
       </div>
 
-      <button class="btn btn-success">
-        Create Alcohol
+      <button class="btn btn-warning">
+        Update Taste
       </button>
       or
-      <a href="/alcohols">Cancel</a>
+      <a href="/tastes/<%= @taste.id %>">Cancel</a>
     </form>
   </div>
 </div>

@@ -1,9 +1,9 @@
 class Pairing < ApplicationRecord
   # Direct associations
 
-  belongs_to :bottle
+  belongs_to :taste
 
-  belongs_to :cigar
+  belongs_to :boldness
 
   # Indirect associations
 

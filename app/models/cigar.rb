@@ -1,14 +1,13 @@
 class Cigar < ApplicationRecord
+  mount_uploader :image_url, ImageUrlUploader
+
   # Direct associations
 
-  has_many   :pairings,
-             :dependent => :destroy
+  belongs_to :profile,
+             :class_name => "Boldness",
+             :foreign_key => "boldness"
 
   # Indirect associations
-
-  has_many   :bottles,
-             :through => :pairings,
-             :source => :bottle
 
   # Validations
 
