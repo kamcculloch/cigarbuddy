@@ -1,11 +1,11 @@
 <div class="page-header">
   <h1>
-    Alcohols
-    <a href="/alcohols/new" class="btn btn-lg btn-success">New Alcohol</a>
+    Tastes
+    <a href="/tastes/new" class="btn btn-lg btn-success">New Taste</a>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
-    <%= search_form_for @q, :class => collapse_search_form, :id => "alcohols_filters" do |f| %>
+    <%= search_form_for @q, :class => collapse_search_form, :id => "tastes_filters" do |f| %>
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
@@ -54,15 +54,20 @@
       </script>
 
         <div class="form-group">
-      <%= f.label :tastes_name_cont, "Taste name contains" %>
-      <%= f.text_field :tastes_name_cont, :class => "form-control", :placeholder => "Taste name contains" %>
+      <%= f.label :alcohols_name_cont, "Alcohol name contains" %>
+      <%= f.text_field :alcohols_name_cont, :class => "form-control", :placeholder => "Alcohol name contains" %>
+    </div>
+
+<div class="form-group">
+      <%= f.label :boldness_name_cont, "Boldness name contains" %>
+      <%= f.text_field :boldness_name_cont, :class => "form-control", :placeholder => "Boldness name contains" %>
     </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
-      <a href="/alcohols" class="btn btn-default btn-block mb-1">Clear filters</a>
+      <a href="/tastes" class="btn btn-default btn-block mb-1">Clear filters</a>
     <% end %>
-    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#alcohols_filters">
+    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#tastes_filters">
       Show Filters
     </a>
   </div>
@@ -76,17 +81,17 @@
         <th>Actions</th>
       </tr>
 
-      <% @alcohols.each do |alcohol| %>
+      <% @tastes.each do |taste| %>
       <tr>
-        <td><%= alcohol.name %></td>
+        <td><%= taste.name %></td>
         <td>
-          <a href="/alcohols/<%= alcohol.id %>" class="btn btn-primary">Show</a>
-          <a href="/alcohols/<%= alcohol.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_alcohol/<%= alcohol.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/tastes/<%= taste.id %>" class="btn btn-primary">Show</a>
+          <a href="/tastes/<%= taste.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_taste/<%= taste.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>
     </table>
-    <%= paginate @alcohols, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @tastes, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>

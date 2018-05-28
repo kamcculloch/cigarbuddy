@@ -1,13 +1,12 @@
 class CigarsController < ApplicationController
   def index
     @q = Cigar.ransack(params[:q])
-    @cigars = @q.result(:distinct => true).includes(:pairings, :bottles).page(params[:page]).per(10)
+    @cigars = @q.result(:distinct => true).includes(:profile).page(params[:page]).per(10)
 
     render("cigars/index.html.erb")
   end
 
   def show
-    @pairing = Pairing.new
     @cigar = Cigar.find(params[:id])
 
     render("cigars/show.html.erb")
@@ -22,6 +21,12 @@ class CigarsController < ApplicationController
   def create
     @cigar = Cigar.new
 
+    @cigar.boldness = params[:boldness]
+    @cigar.name = params[:name]
+    @cigar.price = params[:price]
+    @cigar.country = params[:country]
+    @cigar.size = params[:size]
+    @cigar.image_url = params[:image_url]
 
     save_status = @cigar.save
 
@@ -48,6 +53,12 @@ class CigarsController < ApplicationController
   def update
     @cigar = Cigar.find(params[:id])
 
+    @cigar.boldness = params[:boldness]
+    @cigar.name = params[:name]
+    @cigar.price = params[:price]
+    @cigar.country = params[:country]
+    @cigar.size = params[:size]
+    @cigar.image_url = params[:image_url]
 
     save_status = @cigar.save
 

@@ -5,6 +5,30 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <dt>Boldness</dt>
+      <dd>
+        <% if @cigar.profile.present? %>
+          <a href="/boldnesses/<%= @cigar.boldness %>">
+            <%= @cigar.profile.name %>
+          </a>
+        <% end %>
+      </dd>
+
+      <dt>Name</dt>
+      <dd><%= @cigar.name %></dd>
+
+      <dt>Price</dt>
+      <dd><%= @cigar.price %></dd>
+
+      <dt>Country</dt>
+      <dd><%= @cigar.country %></dd>
+
+      <dt>Size</dt>
+      <dd><%= @cigar.size %></dd>
+
+      <dt>Image url</dt>
+      <dd><img src="<%= @cigar.image_url %>" class="img-responsive"></dd>
+
     </dl>
 
     <div class="btn-group btn-group-justified">
@@ -18,90 +42,5 @@
         Delete
       </a>
     </div>
-  </div>
-</div>
-
-<!-- A Cigar has many pairings -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Pairings
-      </li>
-
-      <% @cigar.pairings.each do |pairing| %>
-        <li class="list-group-item">
-          <a href="/pairings/<%= pairing.id %>">
-            <%= pairing.cigar_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/pairings/<%= pairing.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/pairings/<%= pairing.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_pairing/<%= pairing.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_pairing" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for cigar_id -->
-      <input type="hidden" name="cigar_id" value="<%= @cigar.id %>">
-
-      <!-- Label and input for bottle_id -->
-      <div class="form-group">
-        <label for="bottle_id" class="control-label">
-          Bottle
-        </label>
-
-        <%= select_tag(:bottle_id, options_from_collection_for_select(Bottle.all, :id, :id), :class => "form-control") %>
-      </div>
-
-      <button class="btn btn-block btn-success">
-        Create Pairing
-      </button>
-    </form>
-      </li>
-    </ul>
-  </div>
-</div>
-
-<!-- A Cigar has many bottles -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Bottles
-      </li>
-
-      <% @cigar.bottles.each do |bottle| %>
-        <li class="list-group-item">
-          <a href="/bottles/<%= bottle.id %>">
-            <%= bottle.id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/bottles/<%= bottle.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/bottles/<%= bottle.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_bottle/<%= bottle.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-    </ul>
   </div>
 </div>

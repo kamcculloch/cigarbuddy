@@ -1,13 +1,13 @@
 class AlcoholsController < ApplicationController
   def index
     @q = Alcohol.ransack(params[:q])
-    @alcohols = @q.result(:distinct => true).includes(:bottles).page(params[:page]).per(10)
+    @alcohols = @q.result(:distinct => true).includes(:bottles, :tastes).page(params[:page]).per(10)
 
     render("alcohols/index.html.erb")
   end
 
   def show
-    @bottle = Bottle.new
+    @drink = Drink.new
     @alcohol = Alcohol.find(params[:id])
 
     render("alcohols/show.html.erb")
@@ -22,6 +22,7 @@ class AlcoholsController < ApplicationController
   def create
     @alcohol = Alcohol.new
 
+    @alcohol.name = params[:name]
 
     save_status = @alcohol.save
 
@@ -48,6 +49,7 @@ class AlcoholsController < ApplicationController
   def update
     @alcohol = Alcohol.find(params[:id])
 
+    @alcohol.name = params[:name]
 
     save_status = @alcohol.save
 
