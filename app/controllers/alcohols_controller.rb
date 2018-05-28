@@ -6,6 +6,7 @@ class AlcoholsController < ApplicationController
   end
 
   def show
+    @bottle = Bottle.new
     @alcohol = Alcohol.find(params[:id])
 
     render("alcohols/show.html.erb")

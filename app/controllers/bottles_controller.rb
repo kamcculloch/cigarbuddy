@@ -6,6 +6,7 @@ class BottlesController < ApplicationController
   end
 
   def show
+    @pairing = Pairing.new
     @bottle = Bottle.find(params[:id])
 
     render("bottles/show.html.erb")

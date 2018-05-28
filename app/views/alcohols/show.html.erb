@@ -48,6 +48,20 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_bottle" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for alcohol_id -->
+      <input type="hidden" name="alcohol_id" value="<%= @alcohol.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Bottle
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>
