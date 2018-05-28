@@ -1,6 +1,7 @@
 class BottlesController < ApplicationController
   def index
-    @bottles = Bottle.page(params[:page]).per(10)
+    @q = Bottle.ransack(params[:q])
+    @bottles = @q.result(:distinct => true).includes(:alcohol, :pairings, :cigars).page(params[:page]).per(10)
 
     render("bottles/index.html.erb")
   end

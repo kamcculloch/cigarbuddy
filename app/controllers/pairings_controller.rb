@@ -1,6 +1,7 @@
 class PairingsController < ApplicationController
   def index
-    @pairings = Pairing.page(params[:page]).per(10)
+    @q = Pairing.ransack(params[:q])
+    @pairings = @q.result(:distinct => true).includes(:cigar, :bottle).page(params[:page]).per(10)
 
     render("pairings/index.html.erb")
   end
