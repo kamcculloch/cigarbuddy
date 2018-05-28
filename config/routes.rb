@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Pairing resource:
+  # CREATE
+  get "/pairings/new", :controller => "pairings", :action => "new"
+  post "/create_pairing", :controller => "pairings", :action => "create"
+
+  # READ
+  get "/pairings", :controller => "pairings", :action => "index"
+  get "/pairings/:id", :controller => "pairings", :action => "show"
+
+  # UPDATE
+  get "/pairings/:id/edit", :controller => "pairings", :action => "edit"
+  post "/update_pairing/:id", :controller => "pairings", :action => "update"
+
+  # DELETE
+  get "/delete_pairing/:id", :controller => "pairings", :action => "destroy"
+  #------------------------------
+
   # Routes for the Alcohol resource:
   # CREATE
   get "/alcohols/new", :controller => "alcohols", :action => "new"

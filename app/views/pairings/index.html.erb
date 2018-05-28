@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>
+    Pairings
+    <a href="/pairings/new" class="btn btn-lg btn-success">New Pairing</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Cigar</th>
+        <th>Bottle</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @pairings.each do |pairing| %>
+      <tr>
+        <td><%= pairing.cigar_id %></td>
+        <td><%= pairing.bottle_id %></td>
+        <td>
+          <a href="/pairings/<%= pairing.id %>" class="btn btn-primary">Show</a>
+          <a href="/pairings/<%= pairing.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_pairing/<%= pairing.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
