@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Alcohol resource:
+  # CREATE
+  get "/alcohols/new", :controller => "alcohols", :action => "new"
+  post "/create_alcohol", :controller => "alcohols", :action => "create"
+
+  # READ
+  get "/alcohols", :controller => "alcohols", :action => "index"
+  get "/alcohols/:id", :controller => "alcohols", :action => "show"
+
+  # UPDATE
+  get "/alcohols/:id/edit", :controller => "alcohols", :action => "edit"
+  post "/update_alcohol/:id", :controller => "alcohols", :action => "update"
+
+  # DELETE
+  get "/delete_alcohol/:id", :controller => "alcohols", :action => "destroy"
+  #------------------------------
+
   # Routes for the Cigar resource:
   # CREATE
   get "/cigars/new", :controller => "cigars", :action => "new"
