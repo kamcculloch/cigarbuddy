@@ -1,6 +1,6 @@
 class PairingsController < ApplicationController
   def index
-    @pairings = Pairing.all
+    @pairings = Pairing.page(params[:page]).per(10)
 
     render("pairings/index.html.erb")
   end

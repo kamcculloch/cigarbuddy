@@ -1,6 +1,6 @@
 class CigarsController < ApplicationController
   def index
-    @cigars = Cigar.all
+    @cigars = Cigar.page(params[:page]).per(10)
 
     render("cigars/index.html.erb")
   end

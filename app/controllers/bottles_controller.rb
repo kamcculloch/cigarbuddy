@@ -1,6 +1,6 @@
 class BottlesController < ApplicationController
   def index
-    @bottles = Bottle.all
+    @bottles = Bottle.page(params[:page]).per(10)
 
     render("bottles/index.html.erb")
   end
