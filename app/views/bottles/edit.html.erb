@@ -24,7 +24,7 @@
           Alcohol
         </label>
 
-        <input type="text" id="alcohol_id" name="alcohol_id" placeholder="Alcohol" class="form-control" value="<%= @bottle.alcohol_id %>">
+        <%= select_tag(:alcohol_id, options_from_collection_for_select(Alcohol.all, :id, :created_at, @bottle.alcohol_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
