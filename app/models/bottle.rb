@@ -8,6 +8,10 @@ class Bottle < ApplicationRecord
 
   # Indirect associations
 
+  has_many   :cigars,
+             :through => :pairings,
+             :source => :cigar
+
   # Validations
 
 end
