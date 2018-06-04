@@ -1,6 +1,6 @@
 <!-- Validation failure messages -->
-<% if @pairing.errors.any? %>
-  <% @pairing.errors.full_messages.each do |message| %>
+<% if @boldness.errors.any? %>
+  <% @boldness.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= message %>
@@ -9,22 +9,22 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Pairing #<%= @pairing.id %></h3>
+  <h3>Add Boldness</h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_pairing/<%= @pairing.id %>" method="post">
+    <form action="/create_boldness" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for boldness_id -->
+      <!-- Label and input for name -->
       <div class="form-group">
-        <label for="boldness_id" class="control-label">
-          Boldness
+        <label for="name" class="control-label">
+          Name
         </label>
 
-        <%= select_tag(:boldness_id, options_from_collection_for_select(Boldness.all, :id, :name, @pairing.boldness_id), :class => "form-control") %>
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @boldness.name %>">
       </div>
 
       <!-- Label and input for taste_id -->
@@ -33,14 +33,14 @@
           Taste
         </label>
 
-        <%= select_tag(:taste_id, options_from_collection_for_select(Taste.all, :id, :name, @pairing.taste_id), :class => "form-control") %>
+        <input type="text" id="taste_id" name="taste_id" placeholder="Taste" class="form-control" value="<%= @boldness.taste_id %>">
       </div>
 
-      <button class="btn btn-warning">
-        Update Pairing
+      <button class="btn btn-success">
+        Create Boldness
       </button>
       or
-      <a href="/pairings/<%= @pairing.id %>">Cancel</a>
+      <a href="/boldnesses">Cancel</a>
     </form>
   </div>
 </div>

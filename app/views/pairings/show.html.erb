@@ -5,20 +5,20 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Cigar</dt>
+      <dt>Boldness</dt>
       <dd>
-        <% if @pairing.cigar.present? %>
-          <a href="/cigars/<%= @pairing.cigar_id %>">
-            <%= @pairing.cigar.created_at %>
+        <% if @pairing.boldness.present? %>
+          <a href="/boldnesses/<%= @pairing.boldness_id %>">
+            <%= @pairing.boldness.name %>
           </a>
         <% end %>
       </dd>
 
-      <dt>Bottle</dt>
+      <dt>Taste</dt>
       <dd>
-        <% if @pairing.bottle.present? %>
-          <a href="/bottles/<%= @pairing.bottle_id %>">
-            <%= @pairing.bottle.id %>
+        <% if @pairing.taste.present? %>
+          <a href="/tastes/<%= @pairing.taste_id %>">
+            <%= @pairing.taste.name %>
           </a>
         <% end %>
       </dd>

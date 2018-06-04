@@ -1,6 +1,6 @@
 <!-- Validation failure messages -->
-<% if @bottle.errors.any? %>
-  <% @bottle.errors.full_messages.each do |message| %>
+<% if @taste.errors.any? %>
+  <% @taste.errors.full_messages.each do |message| %>
     <div class="alert alert-dismissable alert-danger">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <%= message %>
@@ -9,29 +9,29 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Bottle #<%= @bottle.id %></h3>
+  <h3>Edit Taste #<%= @taste.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_bottle/<%= @bottle.id %>" method="post">
+    <form action="/update_taste/<%= @taste.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      <!-- Label and input for alcohol_id -->
+      <!-- Label and input for name -->
       <div class="form-group">
-        <label for="alcohol_id" class="control-label">
-          Alcohol
+        <label for="name" class="control-label">
+          Name
         </label>
 
-        <%= select_tag(:alcohol_id, options_from_collection_for_select(Alcohol.all, :id, :created_at, @bottle.alcohol_id), :class => "form-control") %>
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @taste.name %>">
       </div>
 
       <button class="btn btn-warning">
-        Update Bottle
+        Update Taste
       </button>
       or
-      <a href="/bottles/<%= @bottle.id %>">Cancel</a>
+      <a href="/tastes/<%= @taste.id %>">Cancel</a>
     </form>
   </div>
 </div>
