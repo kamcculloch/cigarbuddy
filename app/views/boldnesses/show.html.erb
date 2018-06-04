@@ -1,0 +1,118 @@
+<div class="page-header">
+  <h3>Boldness #<%= @boldness.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12 mb-2">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @boldness.name %></dd>
+
+      <dt>Taste</dt>
+      <dd><%= @boldness.taste_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/boldnesses" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/boldnesses/<%= @boldness.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_boldness/<%= @boldness.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- A Boldness has many cigars -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Cigars
+      </li>
+
+      <% @boldness.cigars.each do |cigar| %>
+        <li class="list-group-item">
+          <a href="/cigars/<%= cigar.id %>">
+            <%= cigar.boldness_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/cigars/<%= cigar.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/cigars/<%= cigar.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_cigar/<%= cigar.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_cigar" method="post" enctype="multipart/form-data">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for boldness_id -->
+      <input type="hidden" name="boldness_id" value="<%= @boldness.id %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for country -->
+      <div class="form-group">
+        <label for="country" class="control-label">
+          Country
+        </label>
+
+        <input type="text" id="country" name="country" placeholder="Country" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for size -->
+      <div class="form-group">
+        <label for="size" class="control-label">
+          Size
+        </label>
+
+        <input type="text" id="size" name="size" placeholder="Size" class="form-control" value="">
+      </div>
+
+      <!-- Label and input for image_url -->
+      <div class="form-group">
+        <label for="image_url" class="control-label">
+          Image url
+        </label>
+
+        <input type="file" id="image_url" name="image_url" class="form-control">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Cigar
+      </button>
+    </form>
+      </li>
+    </ul>
+  </div>
+</div>

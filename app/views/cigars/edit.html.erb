@@ -14,9 +14,64 @@
 
 <div class="row">
   <div class="col-md-12">
-    <form action="/update_cigar/<%= @cigar.id %>" method="post">
+    <form action="/update_cigar/<%= @cigar.id %>" method="post" enctype="multipart/form-data">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for boldness_id -->
+      <div class="form-group">
+        <label for="boldness_id" class="control-label">
+          Boldness
+        </label>
+
+        <%= select_tag(:boldness_id, options_from_collection_for_select(Boldness.all, :id, :name, @cigar.boldness_id), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @cigar.name %>">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @cigar.price %>">
+      </div>
+
+      <!-- Label and input for country -->
+      <div class="form-group">
+        <label for="country" class="control-label">
+          Country
+        </label>
+
+        <input type="text" id="country" name="country" placeholder="Country" class="form-control" value="<%= @cigar.country %>">
+      </div>
+
+      <!-- Label and input for size -->
+      <div class="form-group">
+        <label for="size" class="control-label">
+          Size
+        </label>
+
+        <input type="text" id="size" name="size" placeholder="Size" class="form-control" value="<%= @cigar.size %>">
+      </div>
+
+      <!-- Label and input for image_url -->
+      <div class="form-group">
+        <label for="image_url" class="control-label">
+          Image url
+        </label>
+
+        <%= cl_image_tag(@cigar.image_url.to_s, :width => 90, :height => 90, :crop => :thumb) %>
+        <input type="file" id="image_url" name="image_url" class="form-control">
+      </div>
 
       <button class="btn btn-warning">
         Update Cigar
