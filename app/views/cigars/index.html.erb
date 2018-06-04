@@ -9,6 +9,33 @@
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
+    <%= f.label :size_cont, "Size contains" %>
+    <%= f.text_field :size_cont, :class => "form-control", :placeholder => "Size contains" %>
+  </div>
+
+<div class="form-group">
+    <%= f.label :country_cont, "Country contains" %>
+    <%= f.text_field :country_cont, :class => "form-control", :placeholder => "Country contains" %>
+  </div>
+
+<div class="form-group">
+  <%= f.label :price, "Price" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :price_gteq, :class => "form-control", :placeholder => "Price greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :price_lteq, :class => "form-control", :placeholder => "Price less than or equal to" %>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+    <%= f.label :name_cont, "Name contains" %>
+    <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Name contains" %>
+  </div>
+
+<div class="form-group">
           <%= f.label :created_at, "Created at" %>
           <div class="row">
             <div class='col-md-6 mb-1'>
@@ -48,7 +75,10 @@
           });
       </script>
 
-        
+        <div class="form-group">
+      <%= f.label :profile_name_cont, "Boldness name contains" %>
+      <%= f.text_field :profile_name_cont, :class => "form-control", :placeholder => "Boldness name contains" %>
+    </div>
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
@@ -64,11 +94,29 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
+        <th>Boldness</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Country</th>
+        <th>Size</th>
+        <th>Image url</th>
         <th>Actions</th>
       </tr>
 
       <% @cigars.each do |cigar| %>
       <tr>
+        <td>
+          <% if cigar.profile.present? %>
+            <a href="/boldnesses/<%= cigar.profile.id %>">
+              <%= cigar.profile.name %>
+            </a>
+          <% end %>
+        </td>
+        <td><%= cigar.name %></td>
+        <td><%= cigar.price %></td>
+        <td><%= cigar.country %></td>
+        <td><%= cigar.size %></td>
+        <td><img src='<%= cigar.image_url %>' class='img-responsive'></td>
         <td>
           <a href="/cigars/<%= cigar.id %>" class="btn btn-primary">Show</a>
           <a href="/cigars/<%= cigar.id %>/edit" class="btn btn-warning">Edit</a>

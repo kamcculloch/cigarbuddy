@@ -1,6 +1,6 @@
-ActiveAdmin.register Cigar do
+ActiveAdmin.register Taste do
 
- permit_params :boldness_id, :name, :price, :country, :size, :image_url
+ permit_params :name
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

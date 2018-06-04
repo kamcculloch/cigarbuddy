@@ -1,7 +1,7 @@
 class PairingsController < ApplicationController
   def index
     @q = Pairing.ransack(params[:q])
-    @pairings = @q.result(:distinct => true).includes(:cigar, :bottle).page(params[:page]).per(10)
+    @pairings = @q.result(:distinct => true).includes(:boldness, :taste).page(params[:page]).per(10)
 
     render("pairings/index.html.erb")
   end
@@ -21,8 +21,8 @@ class PairingsController < ApplicationController
   def create
     @pairing = Pairing.new
 
-    @pairing.cigar_id = params[:cigar_id]
-    @pairing.bottle_id = params[:bottle_id]
+    @pairing.boldness_id = params[:boldness_id]
+    @pairing.taste_id = params[:taste_id]
 
     save_status = @pairing.save
 
@@ -49,8 +49,8 @@ class PairingsController < ApplicationController
   def update
     @pairing = Pairing.find(params[:id])
 
-    @pairing.cigar_id = params[:cigar_id]
-    @pairing.bottle_id = params[:bottle_id]
+    @pairing.boldness_id = params[:boldness_id]
+    @pairing.taste_id = params[:taste_id]
 
     save_status = @pairing.save
 

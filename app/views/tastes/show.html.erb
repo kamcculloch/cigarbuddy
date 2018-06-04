@@ -1,39 +1,39 @@
 <div class="page-header">
-  <h3>Alcohol #<%= @alcohol.id %></h3>
+  <h3>Taste #<%= @taste.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Name</dt>
-      <dd><%= @alcohol.name %></dd>
+      <dd><%= @taste.name %></dd>
 
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/alcohols" class="btn btn-primary">
+      <a href="/tastes" class="btn btn-primary">
         Back
       </a>
-      <a href="/alcohols/<%= @alcohol.id %>/edit" class="btn btn-warning">
+      <a href="/tastes/<%= @taste.id %>/edit" class="btn btn-warning">
         Edit
       </a>
-      <a href="/delete_alcohol/<%= @alcohol.id %>" class="btn btn-danger" rel="nofollow">
+      <a href="/delete_taste/<%= @taste.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>
     </div>
   </div>
 </div>
 
-<!-- A Alcohol has many bottles -->
+<!-- A Taste has many drinks -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Bottles
+        Drinks
       </li>
 
-      <% @alcohol.bottles.each do |drink| %>
+      <% @taste.drinks.each do |drink| %>
         <li class="list-group-item">
           <a href="/drinks/<%= drink.id %>">
             <%= drink.id %>
@@ -58,16 +58,16 @@
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
       <!-- Label and input for alcohol_id -->
-      <input type="hidden" name="alcohol_id" value="<%= @alcohol.id %>">
-
-      <!-- Label and input for taste_id -->
       <div class="form-group">
-        <label for="taste_id" class="control-label">
-          Taste
+        <label for="alcohol_id" class="control-label">
+          Alcohol
         </label>
 
-        <%= select_tag(:taste_id, options_from_collection_for_select(Taste.all, :id, :name), :class => "form-control") %>
+        <%= select_tag(:alcohol_id, options_from_collection_for_select(Alcohol.all, :id, :name), :class => "form-control") %>
       </div>
+
+      <!-- Label and input for taste_id -->
+      <input type="hidden" name="taste_id" value="<%= @taste.id %>">
 
       <!-- Label and input for price -->
       <div class="form-group">
@@ -105,28 +105,28 @@
   </div>
 </div>
 
-<!-- A Alcohol has many tastes -->
+<!-- A Taste has many alcohols -->
 
 <div class="row">
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Tastes
+        Alcohols
       </li>
 
-      <% @alcohol.tastes.each do |taste| %>
+      <% @taste.alcohols.each do |alcohol| %>
         <li class="list-group-item">
-          <a href="/tastes/<%= taste.id %>">
-            <%= taste.name %>
+          <a href="/alcohols/<%= alcohol.id %>">
+            <%= alcohol.name %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
-            <a href="/tastes/<%= taste.id %>" class="btn btn-primary">
+            <a href="/alcohols/<%= alcohol.id %>" class="btn btn-primary">
               <i class="fa fa-search-plus"></i>
             </a>
-            <a href="/tastes/<%= taste.id %>/edit" class="btn btn-warning">
+            <a href="/alcohols/<%= alcohol.id %>/edit" class="btn btn-warning">
               <i class="fa fa-edit"></i>
             </a>
-            <a href="/delete_taste/<%= taste.id %>" class="btn btn-danger" rel="nofollow">
+            <a href="/delete_alcohol/<%= alcohol.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
             </a>
           </div>

@@ -1,6 +1,6 @@
-ActiveAdmin.register Bottle do
+ActiveAdmin.register Boldness do
 
- permit_params :alcohol_id
+ permit_params :name, :taste_id
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #

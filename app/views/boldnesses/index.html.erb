@@ -1,17 +1,29 @@
 <div class="page-header">
   <h1>
-    Alcohols
-    <a href="/alcohols/new" class="btn btn-lg btn-success">New Alcohol</a>
+    Boldnesses
+    <a href="/boldnesses/new" class="btn btn-lg btn-success">New Boldness</a>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
-    <%= search_form_for @q, :class => collapse_search_form, :id => "alcohols_filters" do |f| %>
+    <%= search_form_for @q, :class => collapse_search_form, :id => "boldnesses_filters" do |f| %>
       <p class="lead">Narrow results:</p>
 
         <div class="form-group">
     <%= f.label :name_cont, "Name contains" %>
     <%= f.text_field :name_cont, :class => "form-control", :placeholder => "Name contains" %>
   </div>
+
+<div class="form-group">
+  <%= f.label :taste_id, "Taste" %>
+  <div class="row">
+    <div class='col-md-6 mb-1'>
+      <%= f.text_field :taste_id_gteq, :class => "form-control", :placeholder => "Taste greater than or equal to" %>
+    </div>
+    <div class='col-md-6'>
+      <%= f.text_field :taste_id_lteq, :class => "form-control", :placeholder => "Taste less than or equal to" %>
+    </div>
+  </div>
+</div>
 
 <div class="form-group">
           <%= f.label :created_at, "Created at" %>
@@ -53,16 +65,13 @@
           });
       </script>
 
-        <div class="form-group">
-      <%= f.label :tastes_name_cont, "Taste name contains" %>
-      <%= f.text_field :tastes_name_cont, :class => "form-control", :placeholder => "Taste name contains" %>
-    </div>
+        
 
       <%= f.submit :class => "btn btn-primary btn-block mb-1" %>
 
-      <a href="/alcohols" class="btn btn-default btn-block mb-1">Clear filters</a>
+      <a href="/boldnesses" class="btn btn-default btn-block mb-1">Clear filters</a>
     <% end %>
-    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#alcohols_filters">
+    <a class="btn btn-default btn-block mb-1" data-toggle="collapse" href="#boldnesses_filters">
       Show Filters
     </a>
   </div>
@@ -73,20 +82,22 @@
     <table class="table table-striped table-hover">
       <tr>
         <th>Name</th>
+        <th>Taste</th>
         <th>Actions</th>
       </tr>
 
-      <% @alcohols.each do |alcohol| %>
+      <% @boldnesses.each do |boldness| %>
       <tr>
-        <td><%= alcohol.name %></td>
+        <td><%= boldness.name %></td>
+        <td><%= boldness.taste_id %></td>
         <td>
-          <a href="/alcohols/<%= alcohol.id %>" class="btn btn-primary">Show</a>
-          <a href="/alcohols/<%= alcohol.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_alcohol/<%= alcohol.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/boldnesses/<%= boldness.id %>" class="btn btn-primary">Show</a>
+          <a href="/boldnesses/<%= boldness.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_boldness/<%= boldness.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
         </td>
       </tr>
       <% end %>
     </table>
-    <%= paginate @alcohols, theme: 'twitter-bootstrap-4' %>
+    <%= paginate @boldnesses, theme: 'twitter-bootstrap-4' %>
   </div>
 </div>
